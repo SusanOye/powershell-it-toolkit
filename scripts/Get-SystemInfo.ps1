@@ -36,7 +36,13 @@ $processor.Name
 
 # --- Collect disk information for the C: drive ---
 $disk = Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DeviceID='C:'"
-
 [math]::Round($disk.Size / 1GB, 1)
 [math]::Round($disk.FreeSpace / 1GB, 1)
 
+
+
+# --- Work out how long since the last restart ---
+$uptime = (Get-Date) - $os.LastBootUpTime
+
+$uptime.Days
+$uptime.Hours
