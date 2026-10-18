@@ -46,3 +46,8 @@ $uptime = (Get-Date) - $os.LastBootUpTime
 
 $uptime.Days
 $uptime.Hours
+
+# --- Collect network information ---
+$network = Get-NetIPConfiguration | Where-Object { $_.IPv4DefaultGateway }
+
+$network.IPv4Address.IPAddress
