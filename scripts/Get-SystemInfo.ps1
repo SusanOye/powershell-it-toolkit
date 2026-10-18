@@ -34,3 +34,9 @@ $computer.Model
 $processor.Name
 [math]::Round($computer.TotalPhysicalMemory / 1GB, 1)
 
+# --- Collect disk information for the C: drive ---
+$disk = Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DeviceID='C:'"
+
+[math]::Round($disk.Size / 1GB, 1)
+[math]::Round($disk.FreeSpace / 1GB, 1)
+
