@@ -25,3 +25,12 @@ $os = Get-CimInstance -ClassName Win32_OperatingSystem
 $os.CSName
 $os.Caption
 $os.Version
+# --- Collect hardware information ---
+$computer  = Get-CimInstance -ClassName Win32_ComputerSystem
+$processor = Get-CimInstance -ClassName Win32_Processor
+
+$computer.Manufacturer
+$computer.Model
+$processor.Name
+[math]::Round($computer.TotalPhysicalMemory / 1GB, 1)
+
